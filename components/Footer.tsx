@@ -38,6 +38,8 @@ const Footer = () => {
                 </ul>
               </FooterColumn>
             ))}
+
+            <div className="flex flex-col gap-5"></div>
           </div>
         </div>
       </div>
