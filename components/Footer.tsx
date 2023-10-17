@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FOOTER_LINKS } from "@/constants";
+import { FOOTER_CONTACT_INFO, FOOTER_LINKS } from "@/constants";
 
 type FooterColumnProps = {
   title: string;
@@ -30,16 +30,25 @@ const Footer = () => {
             {FOOTER_LINKS.map((column) => (
               <FooterColumn title={column.title}>
                 <ul className="regular-14 flex flex-col gap-4 text-gray-30">
-                  {
-                    column.links.map((link) => (
-                      <Link href="/" key={link}>{link}</Link>
-                    ))
-                  }
+                  {column.links.map((link) => (
+                    <Link href="/" key={link}>
+                      {link}
+                    </Link>
+                  ))}
                 </ul>
               </FooterColumn>
             ))}
 
-            <div className="flex flex-col gap-5"></div>
+            <div className="flex flex-col gap-5">
+              <FooterColumn title={FOOTER_CONTACT_INFO.title}>
+                {FOOTER_CONTACT_INFO.links.map((link) => (
+                  <Link href="/" key={link.label} className="flex gap-4 md:flex-col lg:flex-row">
+                    <p className="whitespace-nowrap">{link.label}:</p>
+                    <p className="medium-14 whitespace-nowrap text-blue-70">{link.value}</p>
+                  </Link>
+                ))}
+              </FooterColumn>
+            </div>
           </div>
         </div>
       </div>
